@@ -13,7 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _selected;
+  var _selected = 'All India';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               iconSize: 30,
               iconEnabledColor: ksecondaryColor,
               dropdownColor: kbaseColor,
-              value: _selected ?? 'Total',
+              value: _selected,
               items: kStateList.map((state) {
                 return DropdownMenuItem<String>(
                   child: Text(
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          StatisticsCard(kStateList.indexOf(_selected)+1),
+          StatisticsCard(kStateList.indexOf(_selected)),
           HeadingText(
             text: 'Tips',
           ),

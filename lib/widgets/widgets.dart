@@ -33,7 +33,6 @@ class StatisticsCard extends StatefulWidget {
 }
 
 class _StatisticsCardState extends State<StatisticsCard> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -41,8 +40,6 @@ class _StatisticsCardState extends State<StatisticsCard> {
         children: [
           Container(
             margin: EdgeInsets.all(8),
-            height: 500,
-            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: kcontainerColor,
@@ -53,17 +50,36 @@ class _StatisticsCardState extends State<StatisticsCard> {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
-                      Text(
-                        snapshot.data.deaths,
-                        style: TextStyle(color: Colors.white),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Last Updated: ${snapshot.data.lastUpdated}',
+                          style: GoogleFonts.openSans(color: Colors.green[200]),
+                        ),
                       ),
-                      Text(snapshot.data.recovered,
-                          style: TextStyle(color: Colors.white))
+                      StatisticName('Confirmed', snapshot.data.confirmed),
+                      StatisticName('Active', snapshot.data.active),
+                      StatisticName('Deaths', snapshot.data.deaths),
+                      StatisticName(
+                          'Recovery Rate (%)',
+                          ((int.parse(snapshot.data.recovered) /
+                                      int.parse(snapshot.data.confirmed)) *
+                                  100)
+                              .toString()
+                              .substring(0, 5))
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}",
-                      style: GoogleFonts.poppins(color: Colors.white));
+                  return Container(
+                    color: kprimaryColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                          'Something wrong happened.',
+                          textScaleFactor: 1.3,
+                          style: GoogleFonts.openSans(color: Colors.white)),
+                    ),
+                  );
                 }
                 return Center(child: CircularProgressIndicator());
               },
@@ -71,6 +87,39 @@ class _StatisticsCardState extends State<StatisticsCard> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class StatisticName extends StatelessWidget {
+  StatisticName(this.title, this.numbers);
+  final String title;
+  final String numbers;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            '$title:',
+            textScaleFactor: 1.2,
+            style: GoogleFonts.openSans(color: Colors.white),
+          ),
+        ),
+        Text(
+          numbers,
+          textScaleFactor: 2,
+          style: TextStyle(color: ksecondaryColor),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 50.0, right: 50),
+          child: Divider(
+            thickness: 1,
+            color: Colors.grey,
+          ),
+        ),
+      ],
     );
   }
 }

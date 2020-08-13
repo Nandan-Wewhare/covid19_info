@@ -19,8 +19,8 @@ class Album {
   final String recovered;
   final String active;
   final String confirmed;
-
-  Album({this.deaths, this.recovered,this.active,this.confirmed});
+  final String lastUpdated;
+  Album({this.deaths, this.recovered, this.active, this.confirmed,this.lastUpdated});
 
   factory Album.fromJson(Map<String, dynamic> json, int state) {
     return Album(
@@ -28,6 +28,7 @@ class Album {
       recovered: json['statewise'][state]['recovered'],
       active: json['statewise'][state]['active'],
       confirmed: json['statewise'][state]['confirmed'],
+      lastUpdated: json['statewise'][state]['lastupdatedtime']
     );
   }
 }
