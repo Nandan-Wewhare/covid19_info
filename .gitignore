@@ -45,5 +45,5 @@ app.*.map.json
 
 # other static files
 
-Capture.JPG
-design.png
+**/Capture.JPG
+**/design.png
