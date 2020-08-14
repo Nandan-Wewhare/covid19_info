@@ -124,67 +124,6 @@ class StatisticName extends StatelessWidget {
   }
 }
 
-class NewsCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.all(8),
-        height: MediaQuery.of(context).size.height / 1.4,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16), color: kcontainerColor),
-        child: ListView(
-          children: [
-            NewsTile(title: 'News Title', date: '11/08/2020'),
-            NewsTile(title: 'News Title', date: '11/08/2020'),
-            NewsTile(title: 'News Title', date: '11/08/2020'),
-            NewsTile(title: 'News Title', date: '11/08/2020'),
-            NewsTile(title: 'News Title', date: '11/08/2020'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class NewsTile extends StatelessWidget {
-  NewsTile({this.title, this.date});
-  final String title;
-  final String date;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          onTap: () => {},
-          title: Text(
-            title,
-            textScaleFactor: 1.2,
-            style: GoogleFonts.poppins(color: Colors.white),
-          ),
-          subtitle: Text(
-            date,
-            textScaleFactor: 1.2,
-            style: GoogleFonts.robotoCondensed(color: Colors.grey),
-          ),
-          trailing: Icon(
-            Icons.arrow_forward,
-            color: Colors.white,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Divider(
-            thickness: 1,
-            color: Colors.grey,
-          ),
-        )
-      ],
-    );
-  }
-}
 
 class AppBarButton extends StatelessWidget {
   AppBarButton(this.name, this.onpressed);

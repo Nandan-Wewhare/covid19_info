@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'widgets/widgets.dart';
-import 'screens/newsscreen.dart';
 
 void main() => runApp(MaterialApp(home: HomePage()));
 
@@ -23,7 +22,6 @@ class _HomePageState extends State<HomePage> {
         leading: Image.asset('images/appbaricon.jpg'),
         backgroundColor: kbaseColor,
         actions: [
-          AppBarButton('News', News()),
           AppBarButton('About Us', null),
         ],
       ),
