@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         leading: Image.asset('images/appbaricon.jpg'),
         backgroundColor: kbaseColor,
         actions: [
-          AppBarButton('About Us', null),
+          AppBarButton('About Us'),
         ],
       ),
       body: ListView(

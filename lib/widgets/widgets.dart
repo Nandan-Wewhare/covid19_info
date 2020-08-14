@@ -74,8 +74,7 @@ class _StatisticsCardState extends State<StatisticsCard> {
                     color: kprimaryColor,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                          'Something wrong happened.',
+                      child: Text('Something wrong happened.',
                           textScaleFactor: 1.3,
                           style: GoogleFonts.openSans(color: Colors.white)),
                     ),
@@ -124,17 +123,21 @@ class StatisticName extends StatelessWidget {
   }
 }
 
-
 class AppBarButton extends StatelessWidget {
-  AppBarButton(this.name, this.onpressed);
+  AppBarButton(this.name);
   final String name;
-  final Widget onpressed;
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        Navigator.of(context)
-            .push(CupertinoPageRoute(builder: (context) => onpressed));
+        showAboutDialog(
+          context: context,
+          applicationName: 'COVID19-Info',
+          applicationVersion: '1.0.0',
+          applicationIcon: Icon(
+            FontAwesomeIcons.virus
+          ),
+        );
       },
       child: Text(
         name,
